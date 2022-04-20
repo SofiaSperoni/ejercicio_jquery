@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Guia 4</title>
+    <style>
+        html,
+        body{
+            height: 100%;
+        }
+        body {
+            background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- Contenido  -->
+    <main class="container">
+        <section class="card border-0 shadow my-5">
+            
+            <div id="info" class="card-body p-5">
+                <h1 id="titulo" class="font-weight-light">Carreras DV</h1>
+                <p id="texto" class="lead">Ingresar el código de la carrera</p>
+            </div>
+
+            <div id="error" class="card-body p-5 d-none">
+                <h1 class="font-weight-light">Carrera inexistente</h1>
+                <p>El código <span class="codigo"> - </span> no fué encontrado </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+        Info oculta para practicar jQuery
+
+        - Se oculta todo con display none, para que tengamos que buscarlo desde Javascript
+        - Cuando el usuario ingresa el código, debemos buscar el elemento que tenga ese ID 
+    -->
+    <div class="d-none">
+        <p class="titulo-dm">Diseño Multimedial</p>
+        <div id="dm">
+                Estudiar Diseño Multimedial en Escuela Da Vinci te prepara para una carrera profesional llena de posibilidades, con un programa tecnológico e interdisciplinario que combina conocimientos provenientes de múltiples áreas técnicas y creativas. En un ambiente estimulante, y de la mano de profesores que son destacados profesionales en su actividad, aprendé: comunicación transmedia, programación y desarrollo de apps y páginas web, e-commerce, marketing digital, publicidad, posproducción de cine y sonido, motion graphics, animación 3D, captura de movimiento, mapping, diseño gráfico digital, diseño de videojuegos para advergaming, realidad virtual, y realidad aumentada, entre otras especialidades.
+        </div>
+
+        <p class="titulo-dw">Desarrollo web</p>
+        <div id="dw">
+                Aprendé técnicas para la creación de Páginas Web RESS (Responsive + Server Side Components), y Aplicaciones Móviles (Progressive Web Apps), que te permitirán convertirte en un Desarrollador Web experto, capaz de desarrollar front y backend (Full Stack Developer) de páginas atractivas, modernas y funcionales.
+        </div>
+    </div>
+
+
+    <!-- Assets Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Mis scripts -->
+    <script>
+        
+        var carrera = prompt("Ingresar dw o dm para ver información de la carrera");
+
+        /*
+        * Cuando el usuario ingresa el código:
+
+        1) Buscar el texto correspondiente a la carrera y guardarlo en una variable, utilizando el código ingresado. 
+        2) Buscar el título correspondiente y guardarlo en otra variable, utilizando el código ingresado
+        3) Escribir el título y texto seleccionando los elementos dentro de la tarjeta utilizando su ID
+        4) Si el código es incorrecto:
+            - Agregar la clase "d-none" al div id="info" para ocultarlo
+            - Eliminar la clase "d-none" al div id="error" para mostrarlo
+            - Escribir adentro del <span class="codigo"> el código que ingresó el usuario, adentro de una etiqueta strong
+        */
+        
+        var carrera = prompt("Ingresar dw o dm para ver información de la carrera");
+        var textoCarrera;
+        var tituloCarrera;
+
+        if(carrera === "dm" || carrera === "dw"){
+            textoCarrera = $("#" + carrera).text();
+            $("#texto").text(textoCarrera);
+
+            tituloCarrera = $(".titulo-" + carrera).text();
+            $("#titulo").text(tituloCarrera);
+        }else{
+            $("#info").addClass('d-none');
+            $("#error").removeClass('d-none');
+        }
+
+
+    </script>
+</body>
+</html>
